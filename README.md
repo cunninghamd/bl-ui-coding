@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# BEN UI Test
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the BEN take-home test!
 
-## Available Scripts
+To help you get started, we've provided a starter kit based on [create-react-app](https://create-react-app.dev) and [Storybook](https://storybook.js.org). If you have another starter kit or boilerplate that you prefer, feel free to use that.
 
-In the project directory, you can run:
+We've preserved the original `create-react-app` README in [README.create-react-app.md](README.create-react-app.md).
 
-### `npm start`
+## What the test is about
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+We'd like you to create a simple application that consumes a GraphQL API. The application should, ideally, use reusable and testable components that also live in Storybook.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+We will be using exogen's [GraphBrainz](https://github.com/exogen/graphbrainz) API that allows searching the [MusicBrainz](https://musicbrainz.org) database.
 
-### `npm test`
+We have loaded this API into Apollo Studio, allowing you to inspect the schema and make test queries easier. You can access it here: https://studio.apollographql.com/public/BENBrainz/variant/current.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Requirements
 
-### `npm run build`
+### Functional requirements:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* The user should be able to perform a search and see a list of matching artists.
+* Clicking on a search result should show a details page with the following information:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    * The name of the artist.
+    * The image of the artist.
+    * Any aliases they have (if any).
+    * The country of the artist.
+    * Five top tracks with the associated play count.
+    * Five similar artists.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Clicking on a similar artist should show the details page of that artist.
+* The artist detail page should have its own URL.
 
-### `npm run eject`
+For a visual representation of the requirements, see this [Figma design](https://www.figma.com/file/HMq9aSTlriseEj6Mi5R6zA/BEN-UI-Test?node-id=0%3A1).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Optional requirements
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* Use reusable components.
+* Add one of the components to Storybook.
+* Implement a simple unit test for said component.
+* Implement as much as you can of the [Figma design](https://www.figma.com/file/HMq9aSTlriseEj6Mi5R6zA/BEN-UI-Test?node-id=0%3A1).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Tips
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+* Use the `search { artists {}}` query to find artists.
+* Use the `lookup { artist() {}}` query to find information about an artist.
+* Artists have both an `id` and a `mbid` (MusicBrainz ID). You'll want to use the `mbid` to be able to perform the `lookup` query.
+* You'll have to use the `lastFM` field for top tracks, and similar artists.
+* You'll have to use the `discogs` field for images.
 
-## Learn More
+### Useful commands
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* `npm start` - Starts the development server.
+* `npm run storybook` - Starts Storybook.
+* `npm test` - Starts the testing server.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## GraphQL
 
-### Code Splitting
+At BEN, we use [Apollo GraphQL Client](https://www.apollographql.com/docs/react/why-apollo/), but you don't have to. Please use any framework you like.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+If you're new to GraphQL, [How to GraphQL](https://www.howtographql.com) is a great resource to get up to speed.
 
-### Analyzing the Bundle Size
+## Notes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* You can use any 3rd party library or starter kit you want. What we've provided here is only for your convenience.
+* This is not a CSS test, so you don't need to make the application look nice. Implementing the [Figma design](https://www.figma.com/file/HMq9aSTlriseEj6Mi5R6zA/BEN-UI-Test?node-id=0%3A1) is an optional requirement.
+* GraphQL libraries typically offer multiple ways of performing the GraphQL calls (components, function calls), and we don't have a preference.
