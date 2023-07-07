@@ -14,6 +14,10 @@ We will be using exogen's [GraphBrainz](https://github.com/exogen/graphbrainz) A
 
 We have loaded this API into Apollo Studio, allowing you to inspect the schema and make test queries easier. You can access it here: https://studio.apollographql.com/public/BENBrainz/variant/current.
 
+## How to submit it
+
+Fork this repository, and when you're done, send us a link to your fork.
+
 ## Requirements
 
 ### Functional requirements:
